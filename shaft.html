@@ -156,10 +156,11 @@
 <script>
   const actualizarPreciosARS = () => {
     fetch("https://api.allorigins.win/raw?url=https://criptoya.com/api/dolar")
-      .then(res => res.json())
-      .then(data => {
+      .then(res => res.text())
+      .then(raw => {
+        const data = JSON.parse(raw);
         const venta = parseFloat(data.blue.venta);
-        if (isNaN(venta)) return;
+        if (isNaN(venta)) throw new Error("No se pudo obtener el valor de venta");
 
         const cotizacionFinal = venta * 1.03;
 
@@ -178,14 +179,15 @@
       })
       .catch(() => {
         document.querySelectorAll(".precio-ars").forEach(el => {
-          el.textContent = "$145.000";
+          el.textContent = "Error al cargar";
         });
       });
   };
 
   actualizarPreciosARS();
-  setInterval(actualizarPreciosARS, 300000);
+  setInterval(actualizarPreciosARS, 300000); // 5 minutos
 </script>
+
 
 </body>
 </html>
