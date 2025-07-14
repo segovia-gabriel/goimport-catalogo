@@ -153,9 +153,9 @@
     </div>
   </div>
 
-  <script>
+<script>
   const actualizarPreciosARS = () => {
-    fetch("https://criptoya.com/api/dolar")
+    fetch("https://api.allorigins.win/raw?url=https://criptoya.com/api/dolar")
       .then(res => res.json())
       .then(data => {
         const venta = parseFloat(data.blue.venta);
