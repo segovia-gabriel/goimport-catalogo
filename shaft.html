@@ -172,45 +172,52 @@
           Consultar por WhatsApp
         </a>
       </section>
-      
+
       <section class="product" data-usdt="50">...mismo contenido...</section>
       <section class="product" data-usdt="50">...mismo contenido...</section>
       <section class="product" data-usdt="50">...mismo contenido...</section>
       <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
     </div>
   </div>
+  
+<script>
+  const actualizarPreciosARS = () => {
+    const apiUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent("https://criptoya.com/api/dolar");
 
-  <script>
-    const actualizarPreciosARS = () => {
-      fetch("https://criptoya.com/api/dolar")
-        .then(res => res.json())
-        .then(data => {
-          const venta = parseFloat(data.blue.venta);
-          if (isNaN(venta)) throw new Error("Cotización inválida");
+    fetch(apiUrl)
+      .then(res => {
+        if (!res.ok) throw new Error("Error en proxy");
+        return res.json();
+      })
+      .then(data => {
+        const response = JSON.parse(data.contents); // allorigins devuelve .contents como string
+        const venta = parseFloat(response.blue.venta);
+        if (isNaN(venta)) throw new Error("Cotización inválida");
 
-          const cotizacionFinal = venta * 1.03;
+        const cotizacionFinal = venta * 1.03;
 
-          document.querySelectorAll(".product").forEach(producto => {
-            const precioUSDT = parseFloat(producto.dataset.usdt);
-            const precioSpan = producto.querySelector(".precio-ars");
+        document.querySelectorAll(".product").forEach(producto => {
+          const precioUSDT = parseFloat(producto.dataset.usdt);
+          const precioSpan = producto.querySelector(".precio-ars");
 
-            if (!isNaN(precioUSDT) && precioSpan) {
-              const precioARS = Math.round(precioUSDT * cotizacionFinal);
-              precioSpan.textContent = `$${precioARS.toLocaleString("es-AR")}`;
-            } else {
-              precioSpan.textContent = "$ -";
-            }
-          });
-        })
-        .catch(() => {
-          document.querySelectorAll(".precio-ars").forEach(el => {
-            el.textContent = "Error al cargar";
-          });
+          if (!isNaN(precioUSDT) && precioSpan) {
+            const precioARS = Math.round(precioUSDT * cotizacionFinal);
+            precioSpan.textContent = `$${precioARS.toLocaleString("es-AR")}`;
+          } else {
+            precioSpan.textContent = "$ -";
+          }
         });
-    };
+      })
+      .catch(() => {
+        document.querySelectorAll(".precio-ars").forEach(el => {
+          el.textContent = "Error al cargar";
+        });
+      });
+  };
 
-    actualizarPreciosARS();
-    setInterval(actualizarPreciosARS, 300000); // cada 5 min
-  </script>
+  actualizarPreciosARS();
+  setInterval(actualizarPreciosARS, 300000); // cada 5 minutos
+</script>
+
 </body>
 </html>
