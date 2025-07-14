@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Catálogo de productos GoImport: cascos Shaft disponibles en todos los talles con precios en USDT y ARS. Consultá por WhatsApp."/>
-  <title>Catálogo de Productos</title>
+  <title>Catálogo de Cascos Shaft</title>
   <style>
     :root {
       --color-primary: #4bc3d1;
@@ -120,12 +120,14 @@
   <div class="catalog">
     <header>
       <img src="https://i.imgur.com/KBTEp3O.png" alt="Logo de GoImport" class="logo" />
-      <h1>Catálogo de Productos</h1>
+      <h1>Catálogo de Cascos Shaft</h1>
     </header>
 
     <div class="products-grid">
-      <!-- Producto 1 -->
-      <section class="product">
+      <!-- 6 productos iguales para testeo -->
+      <!-- Podés cambiar data-usdt="..." más adelante -->
+
+      <section class="product" data-usdt="50">
         <img src="https://shafthelmets.com/wp-content/uploads/SH-560-EVO-MENIFS.png" alt="Casco SH-560" class="product-image" />
         <h2>Casco SH-560</h2>
         <div class="specifications">
@@ -141,48 +143,49 @@
         </a>
       </section>
 
-      <!-- Producto 2 -->
-      <section class="product">
-        <img src="https://shafthelmets.com/wp-content/uploads/SH-560-EVO-MENIFS.png" alt="Casco SH-560" class="product-image" />
-        <h2>Casco SH-560</h2>
-        <div class="specifications">
-          <p><strong>Marca:</strong> Shaft</p>
-          <p><strong>Modelo:</strong> SH-560</p>
-          <p><strong>Talles:</strong> S, M, L, XL</p>
-          <p><strong>Precio en USDT:</strong> 50 USDT</p>
-          <p><strong>Precio:</strong> <span class="precio-ars">Cargando...</span></p>
-          <p><strong>Disponibilidad:</strong> En stock</p>
-        </div>
-        <a class="whatsapp-button" target="_blank" href="https://wa.me/549XXXXXXXXX?text=Hola!%20Estoy%20interesado%20en%20el%20casco%20SH-560,%20¿está%20disponible?">
-          Consultar por WhatsApp
-        </a>
-      </section>
+      <!-- Copias -->
+      <section class="product" data-usdt="50">...mismo contenido...</section>
+      <section class="product" data-usdt="50">...mismo contenido...</section>
+      <section class="product" data-usdt="50">...mismo contenido...</section>
+      <section class="product" data-usdt="50">...mismo contenido...</section>
+      <section class="product" data-usdt="50">...mismo contenido...</section>
+
     </div>
   </div>
 
   <script>
-    const actualizarPreciosARS = () => {
-      fetch("https://criptoya.com/api/dolar")
-        .then(res => res.json())
-        .then(data => {
-          const usdBlue = data.blue;
-          const cotizacionFinal = Math.round(usdBlue * 1.03);
-          const precioUSDT = 50;
-          const precioARS = cotizacionFinal * precioUSDT;
-          const precioFormateado = `$${precioARS.toLocaleString("es-AR")}`;
-          document.querySelectorAll(".precio-ars").forEach(el => {
-            el.textContent = precioFormateado;
-          });
-        })
-        .catch(() => {
-          document.querySelectorAll(".precio-ars").forEach(el => {
-            el.textContent = "Error al cargar";
-          });
-        });
-    };
+  const actualizarPreciosARS = () => {
+    fetch("https://criptoya.com/api/dolar")
+      .then(res => res.json())
+      .then(data => {
+        const venta = parseFloat(data.blue.venta);
+        if (isNaN(venta)) return;
 
-    actualizarPreciosARS();
-    setInterval(actualizarPreciosARS, 300000); // 5 minutos
-  </script>
+        const cotizacionFinal = venta * 1.03;
+
+        document.querySelectorAll(".product").forEach(producto => {
+          const precioUSDT = parseFloat(producto.dataset.usdt);
+          const precioSpan = producto.querySelector(".precio-ars");
+
+          if (!isNaN(precioUSDT) && precioSpan) {
+            const precioARS = Math.round(precioUSDT * cotizacionFinal);
+            const precioFormateado = `$${precioARS.toLocaleString("es-AR")}`;
+            precioSpan.textContent = precioFormateado;
+          } else {
+            precioSpan.textContent = "$ -";
+          }
+        });
+      })
+      .catch(() => {
+        document.querySelectorAll(".precio-ars").forEach(el => {
+          el.textContent = "$145.000";
+        });
+      });
+  };
+
+  actualizarPreciosARS();
+  setInterval(actualizarPreciosARS, 300000);
+</script>
+
 </body>
 </html>
