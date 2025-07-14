@@ -233,6 +233,21 @@
           span.textContent = "Error al cargar";
         });
       });
+
+    document.querySelectorAll(".product").forEach(product => {
+        const nombre = product.querySelector("h2")?.textContent.trim();
+        const marca = product.querySelector(".specifications p:nth-child(1)")?.textContent.split(":")[1]?.trim();
+        const modelo = product.querySelector(".specifications p:nth-child(2)")?.textContent.split(":")[1]?.trim();
+
+        const mensaje = `Hola! Estoy interesado en este producto que vi en su web: ${nombre} - Marca ${marca}, Modelo ${modelo}. ¿Está disponible?`;
+        const telefono = "595993373769";
+        const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+        const boton = product.querySelector(".whatsapp-button");
+        if (boton) {
+        boton.setAttribute("href", url);
+        }
+    });
   </script>
 </body>
 </html>
