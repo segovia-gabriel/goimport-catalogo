@@ -138,7 +138,7 @@
       </section>
 
       <section class="product" data-usdt="110">
-        <img src="img/SH-502SP_Voltaire_Azul.png" alt="Casco SH-559" class="product-image" />
+        <img src="img/CascoShaftSH-559PyroMarron.png" alt="Casco SH-559" class="product-image" />
         <h2>SHAFT SH-559</h2>
         <div class="specifications">
           <p><strong>Marca:</strong> Shaft</p>
@@ -153,7 +153,7 @@
       </section>
 
       <section class="product" data-usdt="110">
-        <img src="img/SH-502SP_Voltaire_Gris.png" alt="Casco SH-502SP" class="product-image" />
+        <img src="img/SH-502SP_Voltaire_Azul.png" alt="Casco SH-502SP" class="product-image" />
         <h2>Casco SH-502SP</h2>
         <div class="specifications">
           <p><strong>Marca:</strong> Shaft</p>
@@ -168,7 +168,7 @@
       </section>
 
       <section class="product" data-usdt="110">
-        <img src="img/SH-502SP_Voltaire_Morado.png" alt="Casco SH-502SP" class="product-image" />
+        <img src="img/SH-502SP_Voltaire_Gris.png" alt="Casco SH-502SP" class="product-image" />
         <h2>Casco SH-502SP</h2>
         <div class="specifications">
           <p><strong>Marca:</strong> Shaft</p>
@@ -183,7 +183,7 @@
       </section>
 
       <section class="product" data-usdt="110">
-        <img src="img/SH-502SP_Devil_Fucsia.png" alt="Casco SH-502SP" class="product-image" />
+        <img src="img/SH-502SP_Voltaire_Morado.png" alt="Casco SH-502SP" class="product-image" />
         <h2>Casco SH-502SP</h2>
         <div class="specifications">
           <p><strong>Marca:</strong> Shaft</p>
@@ -198,7 +198,7 @@
       </section>
 
       <section class="product" data-usdt="110">
-        <img src="img/SH-522SP_Comic-Monster_Blanco.png" alt="Casco SH-502SP" class="product-image" />
+        <img src="img/SH-502SP_Devil_Fucsia.png" alt="Casco SH-502SP" class="product-image" />
         <h2>Casco SH-502SP</h2>
         <div class="specifications">
           <p><strong>Marca:</strong> Shaft</p>
@@ -213,7 +213,7 @@
       </section>
 
       <section class="product" data-usdt="120">
-        <img src="img/SH-559_Sky_Amarillo.png" alt="Casco SH-522SP" class="product-image" />
+        <img src="img/SH-522SP_Comic-Monster_Blanco.png" alt="Casco SH-522SP" class="product-image" />
         <h2>Casco SH-522SP</h2>
         <div class="specifications">
           <p><strong>Marca:</strong> Shaft</p>
@@ -228,7 +228,7 @@
       </section>
 
       <section class="product" data-usdt="110">
-        <img src="img/SH-502SP_Devil_Gris.png" alt="Casco SH-559" class="product-image" />
+        <img src="img/SH-559_Sky_Amarillo.png" alt="Casco SH-559" class="product-image" />
         <h2>Casco SH-559</h2>
         <div class="specifications">
           <p><strong>Marca:</strong> Shaft</p>
@@ -243,7 +243,7 @@
       </section>
 
       <section class="product" data-usdt="110">
-        <img src="https://shafthelmets.com/wp-content/uploads/SH-560-EVO-MENIFS.png" alt="Casco SH-502SP" class="product-image" />
+        <img src="img/SH-502SP_Devil_Gris.png" alt="Casco SH-502SP" class="product-image" />
         <h2>Casco SH-502SP</h2>
         <div class="specifications">
           <p><strong>Marca:</strong> Shaft</p>
@@ -287,10 +287,8 @@
 
     document.querySelectorAll(".product").forEach(product => {
         const nombre = product.querySelector("h2")?.textContent.trim();
-        const marca = product.querySelector(".specifications p:nth-child(1)")?.textContent.split(":")[1]?.trim();
-        const modelo = product.querySelector(".specifications p:nth-child(2)")?.textContent.split(":")[1]?.trim();
 
-        const mensaje = `Hola! Estoy interesado en este producto que vi en su web: ${nombre} - Marca ${marca}, Modelo ${modelo}. ¿Está disponible?`;
+        const mensaje = `Hola! Estoy interesado en este producto que vi en su web: ${nombre}. ¿Está disponible?`;
         const telefono = "595993373769";
         const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
 
