@@ -527,11 +527,28 @@
           const usdt = parseFloat(producto.dataset.usdt);
           const precioSpan = producto.querySelector(".precio-ars");
 
+          let precioFinal = 0;
           if (!isNaN(usdt) && precioSpan) {
-            const precioFinal = (usdt * valorDolar) * 1.03;
-            precioSpan.textContent = `$ ${precioFinal.toFixed(2)}`;
+            precioFinal = (usdt * valorDolar) * 1.03;
+            const precioTexto = `$ ${precioFinal.toFixed(2)}`;
+            precioSpan.textContent = precioTexto;
           } else {
             precioSpan.textContent = "Error al cargar";
+          }
+
+          // Generar mensaje de WhatsApp ahora que el precio está cargado
+          const marca = producto.querySelector("p strong")?.nextSibling?.textContent.trim() || "Marca";
+          const modelo = producto.querySelector("p:nth-child(2)")?.textContent.split(":")[1]?.trim() || "Modelo";
+          const grafico = producto.querySelector("p:nth-child(3)")?.textContent.split(":")[1]?.trim() || "Gráfico";
+          const precioARS = producto.querySelector(".precio-ars")?.textContent.trim() || "Precio no disponible";
+
+          const mensaje = `Hola! Estoy interesado en este producto que vi en su web: Casco ${marca} ${modelo} ${grafico}, ${precioARS} , ¿Está disponible?`;
+          const telefono = "595993373769";
+          const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+          const boton = producto.querySelector(".whatsapp-button");
+          if (boton) {
+            boton.setAttribute("href", url);
           }
         });
       })
@@ -540,22 +557,6 @@
           span.textContent = "Error al cargar";
         });
       });
-
-    document.querySelectorAll(".product").forEach(product => {
-      const marca = product.querySelector("p strong")?.nextSibling?.textContent.trim() || "Marca";
-      const modelo = product.querySelector("p:nth-child(2)")?.textContent.split(":")[1]?.trim() || "Modelo";
-      const grafico = product.querySelector("p:nth-child(3)")?.textContent.split(":")[1]?.trim() || "Gráfico";
-      const precioARS = product.querySelector(".precio-ars")?.textContent.trim() || "Precio no disponible";
-
-      const mensaje = `Hola! Estoy interesado en este producto que vi en su web: Casco ${marca} ${modelo} ${grafico} ${precioARS}. ¿Está disponible?`;
-      const telefono = "595993373769";
-      const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
-
-      const boton = product.querySelector(".whatsapp-button");
-      if (boton) {
-        boton.setAttribute("href", url);
-      }
-    });
   </script>
 
 </body>
