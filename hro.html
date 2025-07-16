@@ -436,16 +436,19 @@
       });
 
     document.querySelectorAll(".product").forEach(product => {
-        const nombre = product.querySelector("h2")?.textContent.trim();
+      const marca = product.querySelector("p strong")?.nextSibling?.textContent.trim() || "Marca";
+      const modelo = product.querySelector("p:nth-child(2)")?.textContent.split(":")[1]?.trim() || "Modelo";
+      const color = product.querySelector("p:nth-child(3)")?.textContent.split(":")[1]?.trim() || "Color";
+      const precioARS = product.querySelector(".precio-ars")?.textContent.trim() || "Precio no disponible";
 
-        const mensaje = `Hola! Estoy interesado en este producto que vi en su web: ${nombre}. ¿Está disponible?`;
-        const telefono = "595993373769";
-        const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+      const mensaje = `Hola! Estoy interesado en este producto que vi en su web: Casco ${marca} ${modelo} ${color} ${precioARS}. ¿Está disponible?`;
+      const telefono = "595993373769";
+      const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
 
-        const boton = product.querySelector(".whatsapp-button");
-        if (boton) {
+      const boton = product.querySelector(".whatsapp-button");
+      if (boton) {
         boton.setAttribute("href", url);
-        }
+      }
     });
   </script>
 
