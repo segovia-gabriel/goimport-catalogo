@@ -812,10 +812,11 @@
         // Obtener datos del producto
         const marca = producto.querySelector("p:nth-child(1)")?.textContent.split(":")[1]?.trim() || "Marca";
         const modelo = producto.querySelector("p:nth-child(2)")?.textContent.split(":")[1]?.trim() || "Modelo";
+        const color = producto.querySelector("p:nth-child(3)")?.textContent.split(":")[1]?.trim() || "Color";
         const precioARS = producto.querySelector(".precio-ars")?.textContent.trim() || "Precio no disponible";
 
         // Generar mensaje WhatsApp
-        const mensaje = `Hola! Estoy interesado en este producto que vi en su web: ${marca} ${modelo} ${precioARS}. ¿Está disponible?`;
+        const mensaje = `Hola! Estoy interesado en este producto que vi en su web: ${marca} ${modelo} ${color} ${precioARS}. ¿Está disponible?`;
         const telefono = "595993373769";
         const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
 
