@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CATALOGO DE MONITORES</title>
+  <style>
+    :root {
+      --color-primary: #4bc3d1;
+      --color-secondary: #a4dfe6;
+      --color-light: #fff;
+      --color-dark: #333;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--color-light);
+      margin: 0;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .catalog {
+      width: 100%;
+      max-width: 1100px;
+      background-color: var(--color-light);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 0 10px;
+    }
+
+    .logo {
+      width: 80px;
+      margin-right: 10px;
+    }
+
+    h1 {
+      color: var(--color-primary);
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .products-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .product {
+      background-color: var(--color-secondary);
+      border: 1px solid var(--color-primary);
+      border-radius: 10px;
+      padding: 15px;
+      width: 100%;
+      max-width: 330px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-image {
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      color: var(--color-dark);
+      margin: 12px 0 8px;
+    }
+
+    .specifications {
+      text-align: left;
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    .specifications p {
+      margin: 4px 0;
+    }
+
+    .whatsapp-button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 12px;
+      background-color: var(--color-primary);
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .whatsapp-button:hover {
+      background-color: #3ab0bd;
+    }
+
+    .disponibilidad {
+      font-weight: bold;
+    }
+
+    .disponible {
+      color: green;
+    }
+
+    .no-disponible {
+      color: red;
+    }
+
+    @media (max-width: 600px) {
+      .product {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="catalog">
+    <header>
+      <img src="https://i.imgur.com/KBTEp3O.png" alt="Logo de GoImport" class="logo" />
+      <h1>CATALOGO DE MONITORES</h1>
+    </header>
+
+    <div class="products-grid">
+      <section class="product" data-usdt="100">
+        <img src="img/monitores/557795.png" alt="MONITOR" class="product-image" />
+        <h2>Monitor Acer 23.6"</h2>
+        <!-- Costo: 70 + 30 -->
+        <div class="specifications">
+          <p><strong>Marca:</strong> Acer</p>
+          <p><strong>Modelo:</strong> V233H</p>
+          <p><strong>Tamaño:</strong> 23.6"</p>
+          <p><strong>Panel:</strong> TN</p>
+          <p><strong>Resolucion:</strong> 1920x1080p FHD 5MS 60Hz</p>
+          <p><strong>Puertos:</strong> VGA, DVI-D</p>
+          <p><strong>Precio:</strong> 100 USDT</p>
+          <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
+          <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
+        </div>
+        <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
+      </section>
+
+      <section class="product" data-usdt="94">
+        <img src="img/monitores/820943.png" alt="MONITOR" class="product-image" />
+        <h2>Monitor Dell 18.5"</h2>
+        <!-- Costo: 64 + 30 -->
+        <div class="specifications">
+          <p><strong>Marca:</strong> Dell</p>
+          <p><strong>Modelo:</strong> E1920H</p>
+          <p><strong>Tamaño:</strong> 18.5"</p>
+          <p><strong>Panel:</strong> TN</p>
+          <p><strong>Resolucion:</strong> 1366x768p HD 5MS 60Hz</p>
+          <p><strong>Puertos:</strong> VGA, DisplayPort 1.2</p>
+          <p><strong>Precio:</strong> 94 USDT</p>
+          <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
+          <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
+        </div>
+        <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
+      </section>
+
+      <section class="product" data-usdt="107">
+        <img src="img/monitores/901284.png" alt="MONITOR" class="product-image" />
+        <h2>Monitor LG 22"</h2>
+        <!-- Costo: 77 + 30 -->
+        <div class="specifications">
+          <p><strong>Marca:</strong> LG</p>
+          <p><strong>Modelo:</strong> 22MP410</p>
+          <p><strong>Tamaño:</strong> 22"</p>
+          <p><strong>Panel:</strong> VA</p>
+          <p><strong>Resolucion:</strong> 1920x1080p FHD 5ms 75Hz</p>
+          <p><strong>Puertos:</strong> HDMI, VGA</p>
+          <p><strong>Precio:</strong> 107 USDT</p>
+          <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
+          <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
+        </div>
+        <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
+      </section>
+
+      <section class="product" data-usdt="95">
+        <img src="img/monitores/918534.png" alt="MONITOR" class="product-image" />
+        <h2>Monitor Aigo DarkFlash 21.5"</h2>
+        <!-- Costo: 65 + 30 -->
+        <div class="specifications">
+          <p><strong>Marca:</strong> Aigo</p>
+          <p><strong>Modelo:</strong> DarkFlash A229W</p>
+          <p><strong>Tamaño:</strong> 21.5"</p>
+          <p><strong>Panel:</strong> TN</p>
+          <p><strong>Resolucion:</strong> 1920x1080p FHD 5ms 60Hz</p>
+          <p><strong>Puertos:</strong> HDMI, VGA</p>
+          <p><strong>Precio:</strong> 95 USDT</p>
+          <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
+          <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
+        </div>
+        <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
+      </section>
+
+      <section class="product" data-usdt="223">
+        <img src="img/monitores/920919.png" alt="MONITOR" class="product-image" />
+        <h2>Monitor Gamer Mtek 27"</h2>
+        <!-- Costo: 173 + 50 -->
+        <div class="specifications">
+            <p><strong>Marca:</strong> MTEK</p>
+            <p><strong>Modelo:</strong> M27SFV240C</p>
+            <p><strong>Tamaño:</strong> 27"</p>
+            <p><strong>Panel:</strong> VA (curvo 1500R)</p>
+            <p><strong>Resolucion:</strong> 1920x1080p FHD 1ms MPRT 240Hz</p>
+            <p><strong>Puertos:</strong> 2xHDMI (1.4/2.0), 1xDisplayPort 1.2, 1xDVI, 1xAudio out, 1xUSB</p>
+            <p><strong>Precio:</strong> 223 USDT</p>
+            <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
+            <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
+        </div>
+        <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
+      </section>
+
+      <section class="product" data-usdt="106">
+        <img src="img/monitores/949767.png" alt="MONITOR" class="product-image" />
+        <h2>Monitor Hyundai 21"</h2>
+        <!-- Costo: 76 + 30 -->
+        <div class="specifications">
+            <p><strong>Marca:</strong> Hyundai</p>
+            <p><strong>Modelo:</strong> HT21FOMBK01</p>
+            <p><strong>Tamaño:</strong> 21.5"</p>
+            <p><strong>Panel:</strong> TN (TFT LED)</p>
+            <p><strong>Resolucion:</strong> 1920x1080p FHD 6.5ms 75Hz</p>
+            <p><strong>Puertos:</strong> HDMI, VGA</p>
+            <p><strong>Precio:</strong> 223 USDT</p>
+            <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
+            <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
+        </div>
+        <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
+      </section>
+
+      <section class="product" data-usdt="368">
+        <img src="img/monitores/950602.png" alt="MONITOR" class="product-image" />
+        <h2>Monitor Gamer Aigo 23.8"</h2>
+        <!-- Costo: 318 + 50 -->
+        <div class="specifications">
+            <p><strong>Marca:</strong> Aigo</p>
+            <p><strong>Modelo:</strong> M24CA</p>
+            <p><strong>Tamaño:</strong> 23.8""</p>
+            <p><strong>Panel:</strong> IPS</p>
+            <p><strong>Resolucion:</strong> 1920x1080p FHD 1ms 165Hz</p>
+            <p><strong>Puertos:</strong> HDMI</p>
+            <p><strong>Precio:</strong> 368 USDT</p>
+            <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
+            <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
+        </div>
+        <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
+      </section>
+
+      <section class="product" data-usdt="349">
+        <img src="img/monitores/950619.png" alt="MONITOR" class="product-image" />
+        <h2>Monitor Gamer Aigo 23.8"</h2>
+        <!-- Costo: 299 + 50 -->
+        <div class="specifications">
+            <p><strong>Marca:</strong> Aigo</p>
+            <p><strong>Modelo:</strong> M24QA</p>
+            <p><strong>Tamaño:</strong> 23.8"</p>
+            <p><strong>Panel:</strong> IPS</p>
+            <p><strong>Resolucion:</strong> 2560x1440p QHD 5MS 75Hz</p>
+            <p><strong>Puertos:</strong> USB C (PD 25W + HDMI), USB C (data/USB 2.0), USB C, salida de audio 3.5mm</p>
+            <p><strong>Precio:</strong> 349 USDT</p>
+            <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
+            <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
+        </div>
+        <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
+      </section>
+
+      <section class="product" data-usdt="106">
+        <img src="img/monitores/989756.png" alt="MONITOR" class="product-image" />
+        <h2>Monitor Gamer Aigo 23.8"</h2>
+        <!-- Costo: 76 + 30 -->
+        <div class="specifications">
+            <p><strong>Marca:</strong> Aigo</p>
+            <p><strong>Modelo:</strong> DarkFlash G24E</p>
+            <p><strong>Tamaño:</strong> 23.8"</p>
+            <p><strong>Panel:</strong> IPS</p>
+            <p><strong>Resolucion:</strong> 1920x1080p FHD 75Hz</p>
+            <p><strong>Puertos:</strong> HDMI, VGA</p>
+            <p><strong>Precio:</strong> 106 USDT</p>
+            <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
+            <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
+        </div>
+        <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
+      </section>
+
+      <section class="product" data-usdt="165">
+        <img src="img/monitores/1007817.png" alt="MONITOR" class="product-image" />
+        <h2>Monitor Gamer LG 27"</h2>
+        <!-- Costo: 125 + 40 -->
+        <div class="specifications">
+            <p><strong>Marca:</strong> LG</p>
+            <p><strong>Modelo:</strong> 27MP400B</p>
+            <p><strong>Tamaño:</strong> 27"</p>
+            <p><strong>Panel:</strong> IPS</p>
+            <p><strong>Resolucion:</strong> 1920x1080p FHD MS 75Hz</p>
+            <p><strong>Puertos:</strong> HDMI, VGA</p>
+            <p><strong>Precio:</strong> 165 USDT</p>
+            <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
+            <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
+        </div>
+        <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
+      </section>
+
+      <section class="product" data-usdt="656">
+        <img src="img/monitores/1007923.png" alt="MONITOR" class="product-image" />
+        <h2>Monitor UltraWide LG 34"</h2>
+        <!-- Costo: 586 + 70 -->
+        <div class="specifications">
+            <p><strong>Marca:</strong> LG</p>
+            <p><strong>Modelo:</strong> 34WN780B</p>
+            <p><strong>Tamaño:</strong> 34"</p>
+            <p><strong>Panel:</strong> IPS</p>
+            <p><strong>Resolucion:</strong> 3440x1440p WQHD 5MS 75Hz</p>
+            <p><strong>Puertos:</strong> 2xHDMI, 1xDisplayPort 1.4, 2xUSB 3.0 down, 1xUSB 3.0 up, salida de audio 3.5 mm</p>
+            <p><strong>Precio:</strong> 656 USDT</p>
+            <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
+            <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
+        </div>
+        <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
+      </section>
+
+      <section class="product" data-usdt="114">
+        <img src="img/monitores/1028638.png" alt="MONITOR" class="product-image" />
+        <h2>Monitor Mtek 22"</h2>
+        <!-- Costo: 74 + 40 -->
+        <div class="specifications">
+            <p><strong>Marca:</strong> MTEK</p>
+            <p><strong>Modelo:</strong> MK22SFV100P</p>
+            <p><strong>Tamaño:</strong> 22"</p>
+            <p><strong>Panel:</strong> VA</p>
+            <p><strong>Resolucion:</strong> 1920x1080p FHD 5MS 100Hz</p>
+            <p><strong>Puertos:</strong> HDMI 1.4/2.1, DisplayPort, VGA, salida de audio 3.5mm</p>
+            <p><strong>Precio:</strong> 114 USDT</p>
+            <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
+            <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
+        </div>
+        <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
+      </section>
+
+      <section class="product" data-usdt="114">
+        <img src="img/monitores/1059038.png" alt="MONITOR" class="product-image" />
+        <h2>Monitor Hyundai 24""</h2>
+        <!-- Costo: 86 + 40 -->
+        <div class="specifications">
+            <p><strong>Marca:</strong> Hyundai</p>
+            <p><strong>Modelo:</strong> HT24FOMBK01</p>
+            <p><strong>Tamaño:</strong> 24"</p>
+            <p><strong>Panel:</strong> TN</p>
+            <p><strong>Resolucion:</strong> 1920x1080p FHD 6.5ms 75Hz</p>
+            <p><strong>Puertos:</strong> HDMI, VGA</p>
+            <p><strong>Precio:</strong> 114 USDT</p>
+            <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
+            <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
+        </div>
+        <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
+      </section>
+
+
+    </div>
+  </div>
+
+<script>
+  fetch("dolar.txt")
+    .then(response => response.text())
+    .then(data => {
+      const valorDolar = parseFloat(data.trim());
+      if (isNaN(valorDolar)) throw new Error("Valor de dólar inválido");
+
+      document.querySelectorAll(".product").forEach(producto => {
+        const usdt = parseFloat(producto.dataset.usdt);
+        const precioSpan = producto.querySelector(".precio-ars");
+
+        let precioFinal = 0;
+        let precioTexto = "Error al cargar";
+
+        if (!isNaN(usdt) && precioSpan) {
+          precioFinal = (usdt * valorDolar) * 1.03;
+          precioTexto = `$ ${precioFinal.toFixed(2)}`;
+          precioSpan.textContent = precioTexto;
+        } else if (precioSpan) {
+          precioSpan.textContent = precioTexto;
+        }
+
+        // Obtener datos del producto
+        const marca = producto.querySelector("p:nth-child(1)")?.textContent.split(":")[1]?.trim() || "Marca";
+        const modelo = producto.querySelector("p:nth-child(2)")?.textContent.split(":")[1]?.trim() || "Modelo";
+        const precioARS = producto.querySelector(".precio-ars")?.textContent.trim() || "Precio no disponible";
+
+        // Generar mensaje WhatsApp
+        const mensaje = `Hola! Estoy interesado en este producto que vi en su web: ${marca} ${modelo} ${precioARS}. ¿Está disponible?`;
+        const telefono = "595993373769";
+        const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+        const boton = producto.querySelector(".whatsapp-button");
+        if (boton) {
+          boton.setAttribute("href", url);
+        }
+      });
+    })
+    .catch(() => {
+      document.querySelectorAll(".precio-ars").forEach(span => {
+        span.textContent = "Error al cargar";
+      });
+    });
+
+  // Marcar disponibilidad con color
+  document.querySelectorAll(".product").forEach(producto => {
+    const disponibilidadSpan = producto.querySelector(".disponibilidad");
+    if (disponibilidadSpan) {
+      const texto = disponibilidadSpan.textContent.trim().toLowerCase();
+      if (texto === "en stock") {
+        disponibilidadSpan.style.color = "green";
+        disponibilidadSpan.style.fontWeight = "bold";
+      } else if (texto === "sin stock") {
+        disponibilidadSpan.style.color = "red";
+        disponibilidadSpan.style.fontWeight = "bold";
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
