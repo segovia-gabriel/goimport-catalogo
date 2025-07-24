@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Catálogo de productos GoImport: Consolas disponible con precios en USDT y ARS. Consultá por WhatsApp."/>
+  <title>Catalogo de </title>
+  <style>
+    :root {
+      --color-primary: #4bc3d1;
+      --color-secondary: #a4dfe6;
+      --color-light: #fff;
+      --color-dark: #333;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--color-light);
+      margin: 0;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .catalog {
+      width: 100%;
+      max-width: 1100px;
+      background-color: var(--color-light);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 0 10px;
+    }
+
+    .logo {
+      width: 80px;
+      margin-right: 10px;
+    }
+
+    h1 {
+      color: var(--color-primary);
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background-color: var(--color-secondary);
+      border: 1px solid var(--color-primary);
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-image {
+      width: 100%;
+      max-height: 250px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      color: var(--color-dark);
+      margin: 12px 0 8px;
+    }
+
+    .specifications {
+      text-align: left;
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    .specifications p {
+      margin: 4px 0;
+    }
+
+    .whatsapp-button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 12px;
+      background-color: var(--color-primary);
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .whatsapp-button:hover {
+      background-color: #3ab0bd;
+    }
+  </style>
+</head>
+<body>
+  <div class="catalog">
+    <header>
+      <img src="https://i.imgur.com/KBTEp3O.png" alt="Logo de GoImport" class="logo" />
+      <h1>CATALOGO DE </h1>
+    </header>
+
+    <div class="products-grid">
+      <!-- CARGA DE PRODUCTOS POR SECCIONES -->
+      <section class="product" data-usdt="500">
+        <img src="img/consola_playstation5_1tb_digital.png" alt="Sony PlayStation 5 Slim Digital" class="product-image" />
+        <h2>Sony PlayStation 5 Digital</h2>
+        <div class="specifications">
+          <p><strong>Producto:</strong> PlayStation 5</p>
+          <p><strong>Marca:</strong> Sony</p>
+          <p><strong>Modelo:</strong> CFI-2015B</p>
+          <p><strong>Color:</strong> Blanco</p>
+          <p><strong>Capacidad:</strong> 1TB SSD</p>
+          <p><strong>Precio:</strong> 500 USDT</p>
+          <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
+          <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
+        </div>
+        <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
+      </section>
+
+    </div>
+  </div>
+
+
+
+<script>
+  fetch("dolar.txt")
+    .then(response => response.text())
+    .then(data => {
+      const valorDolar = parseFloat(data.trim());
+      if (isNaN(valorDolar)) throw new Error("Valor de dólar inválido");
+
+      document.querySelectorAll(".product").forEach(producto => {
+        const usdt = parseFloat(producto.dataset.usdt);
+        const precioSpan = producto.querySelector(".precio-ars");
+
+        let precioFinal = 0;
+        let precioTexto = "Error al cargar";
+
+        if (!isNaN(usdt) && precioSpan) {
+          precioFinal = (usdt * valorDolar) * 1.03;
+          precioTexto = `$ ${precioFinal.toFixed(2)}`;
+          precioSpan.textContent = precioTexto;
+        } else if (precioSpan) {
+          precioSpan.textContent = precioTexto;
+        }
+
+        // Obtener datos del producto
+        const marca = producto.querySelector("p:nth-child(1)")?.textContent.split(":")[1]?.trim() || "Marca";
+        const modelo = producto.querySelector("p:nth-child(2)")?.textContent.split(":")[1]?.trim() || "Modelo";
+        const precioARS = producto.querySelector(".precio-ars")?.textContent.trim() || "Precio no disponible";
+
+        // Generar mensaje WhatsApp
+        const mensaje = `Hola! Estoy interesado en este producto que vi en su web: ${marca} ${modelo} ${precioARS}. ¿Está disponible?`;
+        const telefono = "595993373769";
+        const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+        const boton = producto.querySelector(".whatsapp-button");
+        if (boton) {
+          boton.setAttribute("href", url);
+        }
+      });
+    })
+    .catch(() => {
+      document.querySelectorAll(".precio-ars").forEach(span => {
+        span.textContent = "Error al cargar";
+      });
+    });
+
+  // Marcar disponibilidad con color
+  document.querySelectorAll(".product").forEach(producto => {
+    const disponibilidadSpan = producto.querySelector(".disponibilidad");
+    if (disponibilidadSpan) {
+      const texto = disponibilidadSpan.textContent.trim().toLowerCase();
+      if (texto === "en stock") {
+        disponibilidadSpan.style.color = "green";
+        disponibilidadSpan.style.fontWeight = "bold";
+      } else if (texto === "sin stock") {
+        disponibilidadSpan.style.color = "red";
+        disponibilidadSpan.style.fontWeight = "bold";
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
