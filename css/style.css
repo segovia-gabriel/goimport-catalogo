@@ -41,16 +41,22 @@
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 30px; /* aumentamos a 30px para mayor separación */
+            align-items: stretch;
         }
 
         .product {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             background-color: var(--color-secondary);
             border: 1px solid var(--color-primary);
             border-radius: 10px;
             padding: 15px;
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            box-sizing: border-box;
         }
 
         .product:hover {
@@ -81,8 +87,12 @@
             margin: 4px 0;
         }
 
+        .product .specifications {
+            flex-grow: 1;
+        }
+
         .whatsapp-button {
-            display: inline-block;
+            align-self: center;
             margin-top: 15px;
             padding: 8px 12px;
             background-color: var(--color-primary);
