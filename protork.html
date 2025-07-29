@@ -344,22 +344,24 @@
         const precioSpan = producto.querySelector(".precio-ars");
 
         let precioFinal = 0;
+        let precioTexto = "Error al cargar";
+
         if (!isNaN(usdt) && precioSpan) {
           precioFinal = (usdt * valorDolar) * 1.03;
-          const precioTexto = `$ ${precioFinal.toFixed(2)}`;
+          precioTexto = `$ ${precioFinal.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
           precioSpan.textContent = precioTexto;
-        } else {
-          precioSpan.textContent = "Error al cargar";
+        } else if (precioSpan) {
+          precioSpan.textContent = precioTexto;
         }
 
-        // Obtener info del producto
+        // Obtener datos del producto
         const marca = producto.querySelector("p:nth-child(1)")?.textContent.split(":")[1]?.trim() || "Marca";
         const modelo = producto.querySelector("p:nth-child(2)")?.textContent.split(":")[1]?.trim() || "Modelo";
         const color = producto.querySelector("p:nth-child(3)")?.textContent.split(":")[1]?.trim() || "Color";
         const precioARS = producto.querySelector(".precio-ars")?.textContent.trim() || "Precio no disponible";
 
-        // Mensaje personalizado
-        const mensaje = `Hola! Estoy interesado en este producto que vi en su web: ${marca} ${modelo} ${color}, ${precioARS} , ¿Está disponible?`;
+        // Generar mensaje WhatsApp
+        const mensaje = `Hola! Estoy interesado en este producto que vi en su web: Casco ${marca} ${modelo} ${color} ${precioARS}. ¿Está disponible?`;
         const telefono = "595993373769";
         const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
 
@@ -374,19 +376,21 @@
         span.textContent = "Error al cargar";
       });
     });
-      document.querySelectorAll(".product").forEach(producto => {
-      const disponibilidadSpan = producto.querySelector(".disponibilidad");
-      if (disponibilidadSpan) {
-        const texto = disponibilidadSpan.textContent.trim().toLowerCase();
-        if (texto === "en stock") {
-          disponibilidadSpan.style.color = "green";
-          disponibilidadSpan.style.fontWeight = "bold";
-        } else if (texto === "sin stock") {
-          disponibilidadSpan.style.color = "red";
-          disponibilidadSpan.style.fontWeight = "bold";
-        }
+
+  // Marcar disponibilidad con color
+  document.querySelectorAll(".product").forEach(producto => {
+    const disponibilidadSpan = producto.querySelector(".disponibilidad");
+    if (disponibilidadSpan) {
+      const texto = disponibilidadSpan.textContent.trim().toLowerCase();
+      if (texto === "en stock") {
+        disponibilidadSpan.style.color = "green";
+        disponibilidadSpan.style.fontWeight = "bold";
+      } else if (texto === "sin stock") {
+        disponibilidadSpan.style.color = "red";
+        disponibilidadSpan.style.fontWeight = "bold";
       }
-    });
+    }
+  });
 </script>
 
 </body>

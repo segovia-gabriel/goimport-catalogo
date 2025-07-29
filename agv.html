@@ -411,48 +411,66 @@
     </div>
   </div>
 
-  <script>
-    fetch("dolar.txt")
-      .then(response => response.text())
-      .then(data => {
-        const valorDolar = parseFloat(data.trim());
-        if (isNaN(valorDolar)) throw new Error("Valor de dólar inválido");
+<script>
+  fetch("dolar.txt")
+    .then(response => response.text())
+    .then(data => {
+      const valorDolar = parseFloat(data.trim());
+      if (isNaN(valorDolar)) throw new Error("Valor de dólar inválido");
 
-        document.querySelectorAll(".product").forEach(producto => {
-          const usdt = parseFloat(producto.dataset.usdt);
-          const precioSpan = producto.querySelector(".precio-ars");
+      document.querySelectorAll(".product").forEach(producto => {
+        const usdt = parseFloat(producto.dataset.usdt);
+        const precioSpan = producto.querySelector(".precio-ars");
 
-          let precioFinal = 0;
-          if (!isNaN(usdt) && precioSpan) {
-            precioFinal = (usdt * valorDolar) * 1.03;
-            const precioTexto = `$ ${precioFinal.toFixed(2)}`;
-            precioSpan.textContent = precioTexto;
-          } else {
-            precioSpan.textContent = "Error al cargar";
-          }
+        let precioFinal = 0;
+        let precioTexto = "Error al cargar";
 
-          // Generar mensaje de WhatsApp ahora que el precio está cargado
-          const marca = producto.querySelector("p strong")?.nextSibling?.textContent.trim() || "Marca";
-          const modelo = producto.querySelector("p:nth-child(2)")?.textContent.split(":")[1]?.trim() || "Modelo";
-          const grafico = producto.querySelector("p:nth-child(3)")?.textContent.split(":")[1]?.trim() || "Gráfico";
-          const precioARS = producto.querySelector(".precio-ars")?.textContent.trim() || "Precio no disponible";
+        if (!isNaN(usdt) && precioSpan) {
+          precioFinal = (usdt * valorDolar) * 1.03;
+          precioTexto = `$ ${precioFinal.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+          precioSpan.textContent = precioTexto;
+        } else if (precioSpan) {
+          precioSpan.textContent = precioTexto;
+        }
 
-          const mensaje = `Hola! Estoy interesado en este producto que vi en su web: Casco ${marca} ${modelo} ${grafico}, ${precioARS} , ¿Está disponible?`;
-          const telefono = "595993373769";
-          const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+        // Obtener datos del producto
+        const marca = producto.querySelector("p:nth-child(1)")?.textContent.split(":")[1]?.trim() || "Marca";
+        const modelo = producto.querySelector("p:nth-child(2)")?.textContent.split(":")[1]?.trim() || "Modelo";
+        const grafico = producto.querySelector("p:nth-child(3)")?.textContent.split(":")[1]?.trim() || "Grafico";
+        const precioARS = producto.querySelector(".precio-ars")?.textContent.trim() || "Precio no disponible";
 
-          const boton = producto.querySelector(".whatsapp-button");
-          if (boton) {
-            boton.setAttribute("href", url);
-          }
-        });
-      })
-      .catch(() => {
-        document.querySelectorAll(".precio-ars").forEach(span => {
-          span.textContent = "Error al cargar";
-        });
+        // Generar mensaje WhatsApp
+        const mensaje = `Hola! Estoy interesado en este producto que vi en su web: Casco ${marca} ${modelo} ${grafico} ${precioARS}. ¿Está disponible?`;
+        const telefono = "595993373769";
+        const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+        const boton = producto.querySelector(".whatsapp-button");
+        if (boton) {
+          boton.setAttribute("href", url);
+        }
       });
-  </script>
+    })
+    .catch(() => {
+      document.querySelectorAll(".precio-ars").forEach(span => {
+        span.textContent = "Error al cargar";
+      });
+    });
+
+  // Marcar disponibilidad con color
+  document.querySelectorAll(".product").forEach(producto => {
+    const disponibilidadSpan = producto.querySelector(".disponibilidad");
+    if (disponibilidadSpan) {
+      const texto = disponibilidadSpan.textContent.trim().toLowerCase();
+      if (texto === "en stock") {
+        disponibilidadSpan.style.color = "green";
+        disponibilidadSpan.style.fontWeight = "bold";
+      } else if (texto === "sin stock") {
+        disponibilidadSpan.style.color = "red";
+        disponibilidadSpan.style.fontWeight = "bold";
+      }
+    }
+  });
+</script>
 
 </body>
 </html>
