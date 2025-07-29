@@ -28,7 +28,8 @@
           <p><strong>Capacidad:</strong> 512GB SSD</p>
           <p><strong>Precio:</strong> 388 USDT</p>
           <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
-          <p><strong>Disponibilidad:</strong> En stock</p>
+          <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
+        </div>
         <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
       </section>
 
@@ -43,7 +44,8 @@
           <p><strong>Capacidad:</strong> 1TB SSD</p>
           <p><strong>Precio:</strong> 625 USDT</p>
           <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
-          <p><strong>Disponibilidad:</strong> En stock</p>
+          <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
+        </div>
         <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
       </section>
 
@@ -57,7 +59,7 @@
           <p><strong>Color:</strong> Blanco</p>
           <p><strong>Precio:</strong> 72 USDT</p>
           <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
-          <p><strong>Disponibilidad:</strong> En stock</p>
+          <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
         </div>
         <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
       </section>
@@ -72,7 +74,7 @@
           <p><strong>Color:</strong> Negro</p>
           <p><strong>Precio:</strong> 72 USDT</p>
           <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
-          <p><strong>Disponibilidad:</strong> En stock</p>
+          <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
         </div>
         <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
       </section>
@@ -87,7 +89,7 @@
           <p><strong>Color:</strong> Negro</p>
           <p><strong>Precio:</strong> 74 USDT</p>
           <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
-          <p><strong>Disponibilidad:</strong> En stock</p>
+          <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
         </div>
         <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
       </section>
@@ -102,7 +104,7 @@
           <p><strong>Color:</strong> Rojo</p>
           <p><strong>Precio:</strong> 77 USDT</p>
           <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
-          <p><strong>Disponibilidad:</strong> En stock</p>
+          <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
         </div>
         <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
       </section>
@@ -117,7 +119,7 @@
           <p><strong>Color:</strong> Rosa</p>
           <p><strong>Precio:</strong> 77 USDT</p>
           <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
-          <p><strong>Disponibilidad:</strong> En stock</p>
+          <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
         </div>
         <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
       </section>
@@ -132,7 +134,7 @@
           <p><strong>Color:</strong> Rosa</p>
           <p><strong>Precio:</strong> 77 USDT</p>
           <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
-          <p><strong>Disponibilidad:</strong> En stock</p>
+          <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
         </div>
         <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
       </section>
@@ -147,7 +149,7 @@
           <p><strong>Color:</strong> Verde</p>
           <p><strong>Precio:</strong> 93 USDT</p>
           <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
-          <p><strong>Disponibilidad:</strong> En stock</p>
+          <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
         </div>
         <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
       </section>
@@ -162,7 +164,7 @@
           <p><strong>Color:</strong> Edicion Doom</p>
           <p><strong>Precio:</strong> 135 USDT</p>
           <p><strong>Precio en Pesos:</strong> <span class="precio-ars">Cargando...</span></p>
-          <p><strong>Disponibilidad:</strong> En stock</p>
+          <p><strong>Disponibilidad:</strong> <span class="disponibilidad">En stock</span></p>
         </div>
         <a class="whatsapp-button" target="_blank" href="#">Consultar por WhatsApp</a>
       </section>
@@ -195,11 +197,11 @@
         }
 
         // Obtener datos del producto
-        const producto = producto.querySelector("p:nth-child(1)")?.textContent.split(":")[1]?.trim() || "Producto";
-        const precioARS = producto.querySelector(".precio-ars")?.textContent.trim() || "Precio no disponible";
+        const titulo = producto.querySelector("h2")?.textContent.trim() || "Producto";
+        const precioARS = precioSpan?.textContent.trim() || "Precio no disponible";
 
         // Generar mensaje WhatsApp
-        const mensaje = `Hola! Estoy interesado en este producto que vi en su web: ${producto} ${precioARS}. ¿Está disponible?`;
+        const mensaje = `Hola! Estoy interesado en este producto que vi en su web: ${titulo} ${precioARS}. ¿Está disponible?`;
         const telefono = "595993373769";
         const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
 
@@ -230,5 +232,7 @@
     }
   });
 </script>
+
+
 </body>
 </html>
