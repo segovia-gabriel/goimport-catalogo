@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CATALOGO DE APPLE IPHONE SWAP</title>
+  <title>Apple iPhone SWAP GoImport</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" type="image/png" href="img/logo_goimport_sintexto.png" />
 </head>
@@ -232,7 +232,7 @@
 
         if (!isNaN(usdt) && precioSpan) {
           precioFinal = (usdt * valorDolar) * 1.03;
-          precioTexto = `$ ${precioFinal.toFixed(2)}`;
+          precioTexto = `$ ${precioFinal.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
           precioSpan.textContent = precioTexto;
         } else if (precioSpan) {
           precioSpan.textContent = precioTexto;
