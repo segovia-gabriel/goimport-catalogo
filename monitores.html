@@ -1761,7 +1761,7 @@
 
         if (!isNaN(usdt) && precioSpan) {
           precioFinal = (usdt * valorDolar) * 1.03;
-          precioTexto = `$ ${precioFinal.toFixed(2)}`;
+          precioTexto = `$ ${precioFinal.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
           precioSpan.textContent = precioTexto;
         } else if (precioSpan) {
           precioSpan.textContent = precioTexto;
