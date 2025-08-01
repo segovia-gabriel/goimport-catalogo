@@ -816,7 +816,7 @@
 
         if (!isNaN(usdt) && precioSpan) {
           precioFinal = (usdt * valorDolar) * 1.03;
-          precioTexto = `$ ${precioFinal.toFixed(2)}`;
+          precioTexto = `$ ${precioFinal.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
           precioSpan.textContent = precioTexto;
         } else if (precioSpan) {
           precioSpan.textContent = precioTexto;
@@ -827,7 +827,7 @@
         const precioARS = producto.querySelector(".precio-ars")?.textContent.trim() || "Precio no disponible";
 
         // Generar mensaje WhatsApp
-        const mensaje = `Hola! Estoy interesado en este producto que vi en su web: Drone ${marca} ${modelo} ${precioARS}. ¿Está disponible?`;
+        const mensaje = `Hola! Estoy interesado en este producto que vi en su web: GoPro ${modelo} ${precioARS}. ¿Está disponible?`;
         const telefono = "595993373769";
         const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
 
