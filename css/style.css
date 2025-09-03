@@ -106,3 +106,10 @@
         .whatsapp-button:hover {
             background-color: #3ab0bd;
         }
+
+        .whatsapp-button.disabled {
+            background-color: #aaa !important;
+            cursor: not-allowed;
+            pointer-events: none;
+            opacity: 0.6;
+        }
