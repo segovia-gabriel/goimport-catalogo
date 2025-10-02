@@ -120,7 +120,7 @@ fetch('dolar.txt')
 
       const precioARS = producto.querySelector('.precio-ars')?.textContent?.trim() || 'Precio no disponible';
       const mensaje = buildMensaje(producto, precioARS);
-      const telefono = '595993373769';
+      const telefono = '5493755500350';
       const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
 
       const boton = producto.querySelector('.whatsapp-button');
